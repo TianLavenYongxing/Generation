@@ -23,9 +23,9 @@ import java.util.Date;
 @ApiModel(value = "${comments}")
 public class ${className}DTO extends BashDTO{
 #foreach ($column in $columns)
-#if($column.attrname != 'createBy' && $column.attrname != 'createTime'
-	&& $column.attrname != 'updateBy' && $column.attrname != 'updateTime'
-	&& $column.attrname != 'delTime' && $column.attrname != 'delBy'
+	#if($column.attrname != 'createBy' && $column.attrname != 'createAt'
+	&& $column.attrname != 'updateBy' && $column.attrname != 'updateAt'
+	&& $column.attrname != 'deleteBy' && $column.attrname != 'deleteAt'
 	&& $column.attrname != 'id' && $column.attrname != 'delFlag')
 	@ApiModelProperty(value = "$column.comments")
 	private $column.attrType $column.attrname;

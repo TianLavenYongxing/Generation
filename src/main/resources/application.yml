@@ -10,7 +10,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-read.mysql.svc.cluster.local:3306/goarchery1?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://mysql-read.mysql.svc.cluster.local:3306/goarchery-test?useSSL=false&serverTimezone=UTC
     username: root
     password: MSStarForever*00
   #oracle配置

@@ -50,9 +50,9 @@ public class ${className}Controller {
     })
     public R<Object> page(@ApiIgnore @RequestParam Map<String, Object> params){
 
-        Page<${className}DTO> page = ${classname}Service.page(params);
+        Page<${className}Entity> page = ${classname}Service.page(params);
 
-        return R.ok(page);
+        return R.ok(ConvertUtils.convertPage(page, ${className}DTO.class));
     }
 
     @GetMapping("{id}")

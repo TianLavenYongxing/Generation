@@ -1,25 +1,11 @@
 package ${package}.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.core.metadata.OrderItem;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ${main}.mybatis.service.impl.BaseServiceImpl;
-import ${main}.mybatis.constant.Constant;
-import ${main}.mybatis.utils.ConvertUtils;
-import ${main}.mybatis.utils.ServiceUtils;
-
 import ${package}.dao.${className}Dao;
-import ${package}.dto.${className}DTO;
 import ${package}.entity.${className}Entity;
 import ${package}.service.${className}Service;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 /**
  * ${comments}
@@ -29,9 +15,5 @@ import java.util.Map;
  */
 @Service
 public class ${className}ServiceImpl extends BaseServiceImpl<${className}Dao, ${className}Entity> implements ${className}Service {
-
-    @Autowired
-    protected ${className}Dao baseDao;
-
 
 }
