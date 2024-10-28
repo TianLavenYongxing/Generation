@@ -15,5 +15,5 @@ import java.util.Map;
  * @since ${version} ${date}
  */
 public interface ${className}Service extends BaseService<${className}Entity> {
-    Page<${className}DTO> page(Map<String, Object> params);
+
 }

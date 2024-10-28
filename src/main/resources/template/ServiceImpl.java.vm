@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ${main}.mybatis.service.impl.BaseServiceImpl;
 import ${main}.mybatis.constant.Constant;
 import ${main}.mybatis.utils.ConvertUtils;
+import ${main}.mybatis.utils.ServiceUtils;
 
 import ${package}.dao.${className}Dao;
 import ${package}.dto.${className}DTO;
@@ -32,26 +33,5 @@ public class ${className}ServiceImpl extends BaseServiceImpl<${className}Dao, ${
     @Autowired
     protected ${className}Dao baseDao;
 
-    public Page<${className}DTO> page(Map<String, Object> params){
-        // 获取当前页码和每页记录数
-        int page = Integer.parseInt(params.get(Constant.PAGE).toString());
-        int limit = Integer.parseInt(params.get(Constant.LIMIT).toString());
-
-        // 创建分页对象
-        Page<GaCompResultsPositionEntity> pageRequest = new Page<>(page, limit);
-
-        // 设置排序（可选）
-        if (params.containsKey(Constant.ORDER_FIELD) && params.containsKey(Constant.ORDER)) {
-            String orderField = params.get(Constant.ORDER_FIELD).toString();
-            String order = params.get(Constant.ORDER).toString();
-            if ("asc".equalsIgnoreCase(order)) {
-                pageRequest.addOrder(OrderItem.asc(orderField));
-            } else if ("desc".equalsIgnoreCase(order)) {
-                pageRequest.addOrder(OrderItem.desc(orderField));
-            }
-        }
-        Page<GaCompResultsPositionEntity> pageResult = page(pageRequest, new QueryWrapper<GaCompResultsPositionEntity>().allEq(params));
-        return ConvertUtils.convertPage(pageResult, GaCompResultsPositionDTO.class);
-    }
 
 }
