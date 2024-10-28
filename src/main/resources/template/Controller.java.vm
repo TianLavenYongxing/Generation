@@ -2,12 +2,12 @@ package ${package}.controller;
 
 
 import ${package}.dto.${className}DTO;
+import ${package}.entity.${className}Entity;
 import ${package}.excel.${className}Excel;
-import ${package}.mybatis.constant.Constant;
-import ${package}.mybatis.page.PageData;
-import ${package}.mybatis.utils.ExcelUtils;
-import ${package}.mybatis.utils.Result;
 import ${package}.service.${className}Service;
+import ${main}.mybatis.constant.Constant;
+import ${main}.mybatis.utils.ConvertUtils;
+import ${main}.mybatis.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -19,6 +19,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
+import java.util.Arrays;
 
 
 /**
@@ -47,46 +48,48 @@ public class ${className}Controller {
         @ApiImplicitParam(name = Constant.ORDER_FIELD, value = "排序字段", paramType = "query", dataType="String") ,
         @ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType="String")
     })
-    public Result<PageData<${className}DTO>> page(@ApiIgnore @RequestParam Map<String, Object> params){
+    public R<Object> page(@ApiIgnore @RequestParam Map<String, Object> params){
 
         PageData<${className}DTO> page = ${classname}Service.page(params);
 
-        return new Result<PageData<${className}DTO>>().ok(page);
+        return R.ok(null);
     }
 
     @GetMapping("{id}")
     @ApiOperation("信息")
-    public Result<${className}DTO> get(@PathVariable("id") String id){
-        ${className}DTO data = ${classname}Service.get(id);
-
-        return new Result<${className}DTO>().ok(data);
+    public R<${className}DTO> get(@PathVariable("id") String id){
+        ${className}Entity entity = ${classname}Service.getById(id);
+        ${className}DTO data = ConvertUtils.sourceToTarget(entity,${className}DTO.class);
+        return R.ok(data);
     }
 
     @PostMapping
     @ApiOperation("保存")
-    public Result<Object> save(@RequestBody ${className}DTO dto){
+    public R<Object> save(@RequestBody ${className}DTO dto){
 
-        ${classname}Service.save(dto);
+        ${className}Entity entity = ConvertUtils.sourceToTarget(dto,${className}Entity.class);
+        ${classname}Service.save(entity);
 
-        return new Result<>();
+        return R.ok("");
     }
 
     @PutMapping
     @ApiOperation("修改")
-    public Result<Object>  update(@RequestBody ${className}DTO dto){
+    public R<Object>  update(@RequestBody ${className}DTO dto){
 
-        ${classname}Service.update(dto);
+        ${className}Entity entity = ConvertUtils.sourceToTarget(dto,${className}Entity.class);
+        ${classname}Service.updateById(entity);
 
-        return new Result<>();
+        return R.ok("");
     }
 
     @DeleteMapping
     @ApiOperation("删除")
-    public Result<Object> delete(@RequestBody String[] ids){
+    public R<Object> delete(@RequestBody String[] ids){
 
-        ${classname}Service.delete(ids);
+        ${classname}Service.removeByIds(Arrays.asList(ids));
 
-        return new Result<>();
+        return R.ok("");
     }
 
     @GetMapping("export")

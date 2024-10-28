@@ -2,7 +2,7 @@ package ${package}.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import ${package}.mybatis.dto.BashDTO;
+import ${main}.mybatis.dto.BashDTO;
 
 import lombok.EqualsAndHashCode;
 import lombok.Data;
@@ -10,6 +10,7 @@ import lombok.Data;
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
+import java.util.Date;
 
 /**
  * ${comments}
