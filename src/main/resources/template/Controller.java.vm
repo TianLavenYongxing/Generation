@@ -1,6 +1,6 @@
 package ${package}.controller;
 
-
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ${package}.dto.${className}DTO;
 import ${package}.entity.${className}Entity;
 import ${package}.excel.${className}Excel;
@@ -50,9 +50,9 @@ public class ${className}Controller {
     })
     public R<Object> page(@ApiIgnore @RequestParam Map<String, Object> params){
 
-        PageData<${className}DTO> page = ${classname}Service.page(params);
+        Page<${className}DTO> page = ${classname}Service.page(params);
 
-        return R.ok(null);
+        return R.ok(page);
     }
 
     @GetMapping("{id}")

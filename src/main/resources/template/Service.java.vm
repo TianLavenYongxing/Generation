@@ -1,5 +1,6 @@
 package ${package}.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ${main}.mybatis.service.BaseService;
 import ${package}.dto.${className}DTO;
 import ${package}.entity.${className}Entity;
@@ -14,5 +15,5 @@ import java.util.Map;
  * @since ${version} ${date}
  */
 public interface ${className}Service extends BaseService<${className}Entity> {
-
+    Page<${className}DTO> page(Map<String, Object> params);
 }
