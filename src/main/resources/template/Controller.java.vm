@@ -70,7 +70,7 @@ public class ${className}Controller {
         ${className}Entity entity = ConvertUtils.sourceToTarget(dto,${className}Entity.class);
         ${classname}Service.save(entity);
 
-        return R.ok("");
+        return R.ok();
     }
 
     @PutMapping
@@ -80,7 +80,7 @@ public class ${className}Controller {
         ${className}Entity entity = ConvertUtils.sourceToTarget(dto,${className}Entity.class);
         ${classname}Service.updateById(entity);
 
-        return R.ok("");
+        return R.ok();
     }
 
     @DeleteMapping
@@ -89,7 +89,7 @@ public class ${className}Controller {
 
         ${classname}Service.removeByIds(Arrays.asList(ids));
 
-        return R.ok("");
+        return R.ok();
     }
 
     @GetMapping("export")
